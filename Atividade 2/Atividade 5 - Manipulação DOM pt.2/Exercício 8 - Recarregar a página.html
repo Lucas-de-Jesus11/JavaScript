@@ -1,0 +1,68 @@
+<!-- Crie um link “Clique aqui várias vezes”.
+A cada clique, conte o número de cliques.
+• Quando chegar a 5 cliques, mostre um alerta.
+• Quando chegar a 10 cliques, mostre confetes.
+• Quando passar de 15 cliques, mostre um alerta dizendo "A página será
+recarregada..." e recarregue com location.reload(). -->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        a{
+            text-decoration: none;
+            background-color: #007bff;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-size: 1.1em;
+            transition: background-color 0.3s, transform 0.1s;
+        }
+        a:hover{
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="#">Clique aqui</a>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+    <script>
+        const hyperlink = document.querySelector("a")
+        let cont = 0
+        hyperlink.addEventListener("click", () => {
+            cont++
+            console.log(`Cliques: ${cont}`)
+            if (cont === 5) {
+                alert("Você atingiu 5 cliques")
+            }
+            if (cont === 10) {
+                confetti({
+                    particleCount: 1000, // Define a quantidade de confetes
+                    spread: 180, // Define o angulo
+                    origin: { y: 0.6 } // Define de onde os confetes saem
+                })
+                alert("🎉Parabéns! você clicou 10 vezes")
+            }
+            if (cont >= 15) {
+                alert(`${cont} cliques. A página será recarregada...`)
+                location.reload()
+            }
+        })
+    </script>
+</body>
+
+</html> 

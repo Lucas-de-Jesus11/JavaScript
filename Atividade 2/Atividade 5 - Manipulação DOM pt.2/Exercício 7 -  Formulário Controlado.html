@@ -1,0 +1,87 @@
+<!-- Crie um formulário com um campo de busca e um botão “Pesquisar”.
+Ao enviar o formulário:
+• Mostre no console o que o usuário digitou.
+• Use event.preventDefault() para evitar o recarregamento da página. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário Controlado</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        form{
+            background: white;
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            gap: 10px;
+        }
+        label{
+            font-size: 16px;
+            color: #333;
+            font-weight: bold;
+            padding: 10px;
+        }
+        input[type="text"]{
+            padding: 10px;
+            width: 220px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+        }
+        input[type="text"]:focus{
+            border-color: #4285f4;
+        }
+        input[type="submit"]{
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover{
+            background-color: orangered;
+        }
+        button{
+            padding: 8px 15px;
+            font-size: 16px;
+            margin-left: 5px;
+        }
+    </style>
+</head>
+<body>
+        <form action="https://www.google.com/search" method="get">
+        <label for="">Busca: </label>
+        <input type="text" name="q" id="src" required>
+        <!-- a letra "q" é obrigatório, significa query  -->
+        <input type="submit" name="" id="" value="Pesquisar">
+    </form>
+
+    <script>
+        const formEl = document.querySelector("form")
+        formEl.addEventListener("submit", (event) => {
+            // Pegar o valor digitado no campo input com o atributo "q"
+            const queryValue = event.target.querySelector("input[name=q]").value
+            // event.target é o elemento que disparou o evento neste caso
+            console.log("Usuario pesquisou:", queryValue)
+
+            event.preventDefault()
+            // Impede que o form recarregue a página ao ser enviado
+        })
+    </script>
+</body>
+</html>
