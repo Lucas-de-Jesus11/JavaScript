@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="botao">Clique aqui</button>
+    <script>
+        // Uma "Promise" é uma promessa de que algo vai acontecer depois 
+        // Pode dar certo ou errado, mas o JavaScript não fica parado esperando 
+        // pending(pendente) = acabou de começar, ainda não terminou
+        // fulfilled(cumprida) = terminou com sucesso -> chama .then() 
+        // rejected (rejeitada) = terminou com erro -> chama .cacth() 
+
+        let count = 0
+        function testPromise() {
+            const promiseCount = ++count
+            console.log("sync start")
+            new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    if (promiseCount % 2 == 0) {
+                        resolve(promiseCount)
+                    } else {
+                        reject(promiseCount)
+                    }
+                }, 3000)
+            }).then((value) => {
+                console.log(`sync finished ${value}`)
+            }).catch(() =>{
+                console.error("sync error")
+            })
+            console.log("sync finished")
+        }
+        const buttonEl = document.querySelector("button")
+        buttonEl.addEventListener("click", testPromise)
+    </script>
+</body>
+
+</html>

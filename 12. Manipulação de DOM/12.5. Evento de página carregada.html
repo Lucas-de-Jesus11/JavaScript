@@ -1,0 +1,35 @@
+<!-- Evento de página carregada - DOMContentLoaded
+Eventos são funções carregadas a partir de um evento externo
+Ex: Clique, carregamento de página, abertura de chamado, etc...  -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const el1 = document.getElementById("title")
+            console.log(el1)
+        })
+        // Nesse momento, o navegador ainda não leu o <h1>, entao getElementById("title") não encontrada nada, retornando null 
+    </script>
+
+    <h1 id="title">Minha Página</h1>
+
+    <script>
+        const el2 = document.getElementById("title")
+        console.log(el2)
+        // Aqui, o <h1> já foi lido e adicionado ao DOM, então el2 encontra o elemento corretamente
+    </script>
+
+    <!-- Para corrigir isso então, usamos DOMContentLoaded() no el1
+    Isso garante que o script só rode depois que toda a estrutura HTMl estiver pronta -->
+</body>
+
+</html>

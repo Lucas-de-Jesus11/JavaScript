@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .fundo{
+            background-color: black;
+        }
+        body{
+            transition: background-color 0.5s;
+        }
+    </style>
+</head>
+<body id="corpo">
+    <button id="botao">Alterar cor</button>
+
+    <script>
+        const corpoEl = document.querySelector("body")
+        const botaoEl = document.querySelector("#botao")
+        botaoEl.addEventListener("click", () => {
+            corpoEl.classList.toggle("fundo")
+        })
+    </script>
+</body>
+</html>

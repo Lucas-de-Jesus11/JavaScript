@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>Clique aqui</button>
+    <hr>
+    <a href="#">Clique aqui</a>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+    <script>
+        const button = document.querySelector("button")
+        button.addEventListener("click", () => {
+            console.log("Clicou no botão")
+        })
+
+        const hyperlink = document.querySelector("a")
+        let cont = 0
+        hyperlink.addEventListener("click", () => {
+            cont++
+            console.log(`Cliques: ${cont}`)
+            if (cont === 5) {
+                alert("Você atingiu 5 cliques")
+            }
+            if (cont === 10) {
+                confetti({
+                    particleCount: 1000, // Define a quantidade de confetes
+                    spread: 180, // Define o angulo
+                    origin: { y: 0.6 } // Define de onde os confetes saem
+                })
+                alert("🎉Parabéns! você clicou 10 vezes")
+            }
+            if (cont >= 15) {
+                alert(`${cont} cliques. A página será recarregada...`)
+                location.reload()
+            }
+        })
+    </script>
+</body>
+
+</html>

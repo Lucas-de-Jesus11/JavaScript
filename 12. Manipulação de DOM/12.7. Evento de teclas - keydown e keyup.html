@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" name="" id="">
+    <script>
+        const inputEl = document.querySelector("input[type=text]")
+        inputEl.addEventListener("keydown", () => {
+            console.log("Apertou a tecla")
+        })
+
+        inputEl.addEventListener("keyup", () => {
+            console.log("Soltou a tecla")
+        })
+        inputEl.addEventListener("keyup", (event) => {
+            console.log(`Você teclou: ${event.key} - ${event.keyCode}`)
+        })
+        inputEl.addEventListener("keyup", (event) => {
+            if (event.key === "Enter" || event.keyCode === 13) {
+                alert("Tecla enter pressionada")
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>Entendendo promises</h2>
+    <button id="pedir">Realizar pedido</button>
+    <div id="status">Nenhum pedido feito ainda</div>
+    <script>
+        const statusEl = document.getElementById("status")
+        const botaoEl = document.getElementById("botao")
+        function fazerPedido() {
+            statusEl.textContent = "Pedido feito! preparando"
+            statusEl.style.color = "blue"
+            statusEl.style.fontSize = "18px"
+            botaoEl.textContent = "Aguardando"
+            botaoEl.disable = true
+
+            // Criando a Promise:
+            const promessa = new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    // 50% de chance de sucesso
+                    const sucess = Math.random() > 0.5
+                    if (sucess) {
+                        resolve("Pedido pronto")
+                    } else {
+                        reject("Pedido cancelado")
+                    }
+                }, 2000)
+            })
+            promessa
+                .then((mensagem) => {
+                    statusEl.innerHTML = `<span class="ok">${mensagem}</span>`;
+                    statusEl.style.color = "green"
+                    statusEl.style.fontSize = "20px"
+                    statusEl.style.fontWeight = "bold"
+                })
+            .catch((erro) => {
+                statusEl.innerHTML = `<span class="ok">${erro}</span>`;
+                statusEl.style.color = "red"
+                statusEl.style.fontSize = "20px"
+                statusEl.style.fontWeight = "bold"
+                
+            })
+        }
+    </script>
+</body>
+
+</html>

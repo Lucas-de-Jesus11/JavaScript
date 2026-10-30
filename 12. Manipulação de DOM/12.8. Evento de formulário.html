@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="https://www.google.com/search" method="get">
+        <label for="">* Busca</label>
+        <input type="text" name="q" id="src" required>
+        <!-- a letra "q" é obrigatório, significa query  -->
+        <input type="submit" name="" id="" value="Pesquisar">
+    </form>
+
+    <script>
+        const formEl = document.querySelector("form")
+        formEl.addEventListener("submit", (event) => {
+            // Pegar o valor digitado no campo input com o atributo "q"
+            const queryValue = event.target.querySelector("input[name=q]").value
+            // event.target é o elemento que disparou o evento neste caso
+            console.log("Usuario pesquisou:", queryValue)
+
+            event.preventDefault()
+            // Impede que o form recarregue a página ao ser enviado
+        })
+    </script>
+
+</body>
+</html>
